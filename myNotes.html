@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Note Maker</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style2.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  </head>
+
+  <body class="bg-light"  onload="fetchNotes()">
+    <div class="header clearfix">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">Note Maker</a>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Make New<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="myNotes.html">View Notes</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="my-3 p-3 bg-white rounded box-shadow" style="margin:25px;">
+          <h4 class="border-bottom border-gray pb-2 mb-0">My Notes</h4>
+          <div id="notesHere">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="my-3 p-3 bg-white rounded box-shadow" style="margin:25px;">
+          <h4 class="border-bottom border-gray pb-2 mb-0">Favourites</h4>
+          <div class="media text-muted pt-3">
+            <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
+            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+              <strong class="d-block text-gray-dark">@username</strong>
+              Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+            </p>
+          </div>
+
+          <div id="check">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer" style="text-align:center;">
+      <p>&copy; 2018 Kathdevs, Inc.</p>
+    </footer>
+
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="js/main.js"></script>
+
+  </body>
+</html>

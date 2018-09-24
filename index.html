@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Note Maker</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="header clearfix">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+          <a class="navbar-brand" href="#">Note Maker</a>
+          <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html">Make New<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="myNotes.html">View Notes</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <div class="jumbotron">
+        <h2>Store Your Important Notes </h2><br>
+        <form id="myForm">
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" class="form-control" id="noteTitle" placeholder="Note Title" />
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea class="form-control" id="description" placeholder="Your Notes Here"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Date : </label>
+            <input type="date" id="noteDate">
+
+          </div>
+          <div id="check2">
+
+          </div>
+          <a href="myNotes.html" onclick="storeNotes()" type="submit" class="btn btn-primary">Save</a>&nbsp
+
+      </div>
+
+
+      <footer class="footer" style="text-align:center;">
+        <p>&copy; 2018 Kathdevs, Inc.</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="js/main.js"></script>
+  </body>
+</html>
