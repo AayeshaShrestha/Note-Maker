@@ -73,9 +73,58 @@ function deleteNote(p){
 function editNote(i){
   var notes = JSON.parse(localStorage.getItem('notes'));
 
+  //get the old values
   var title = notes[i].title;
   var desc = notes[i].description;
   var rec = notes[i].recorded;
+
+  //get ids of the inputs
+  var note_title = document.getElementById('changeTitle');
+	var note_des = document.getElementById('changeDesc');
+  var note_date = document.getElementById('changeDate');
+
+  //display modal with its contents
+  var modal = document.getElementById('myModal');
+  var span = document.getElementsByClassName("close")[0];
+  modal.style.display = "block";
+
+  //put the old values in the input area
+  note_title.value=title;
+  note_des.value=desc;
+  note_date.value=rec;
+
+  //get edited values
+  note_title.onchange = function(){
+    title = document.getElementById('changeTitle').value;
+  }
+  note_des.onchange = function(){
+    desc = document.getElementById('changeDesc').value;
+  }
+  note_date.onchange = function(){
+    rec = document.getElementById('changeDate').value;
+  }
+
+  //save the edited values
+  var editedNote = document.getElementById('saveChanges');
+  editedNote.onclick = function(){
+    notes[i].title = title;
+    notes[i].description = desc;
+    notes[i].recorded = rec;
+    localStorage.setItem('notes', JSON.stringify(notes));
+    fetchNotes();
+  }
+
+  //click span (x) to quit the modal i.e quit editing
+  span.onclick = function() {
+        modal.style.display = "none";
+  }
+
+  //click anywhere on the window to quit
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  }
 
 
 

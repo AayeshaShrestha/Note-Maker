@@ -36,6 +36,34 @@
           <h4 class="border-bottom border-gray pb-2 mb-0">My Notes</h4>
           <div id="notesHere">
           </div>
+
+          <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+              <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <h4 style="text-align:center;">Edit Your Notes : </h4>
+                  <form id="myForm">
+                    <div class="form-group">
+                      <label>Title</label>
+                      <input type="text" class="form-control" id="changeTitle" placeholder="Note Title" />
+                    </div>
+                    <div class="form-group">
+                      <label>Description</label>
+                      <textarea class="form-control" id="changeDesc" placeholder="Your Notes Here"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label>Date : </label>
+                      <input type="date" id="changeDate">
+
+                    </div>
+
+                    <a href="myNotes.html" id="saveChanges" type="submit" class="btn btn-primary">Save Changes</a>&nbsp
+                    <a href="myNotes.html" type="submit" class="btn btn-danger">Cancel</a>
+                </form>
+            </div>
+
+      </div>
         </div>
       </div>
       <div class="col-md-6">
