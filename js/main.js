@@ -1,5 +1,3 @@
-//document.getElementById('myForm').addEventListener('submit',storeNotes);
-
 
 
 function storeNotes(){
@@ -10,12 +8,15 @@ function storeNotes(){
   if(!note_title || !note_des || !note_date){
 		alert('Please submit all the info!!');
 		return false;
-	}
+	}else{
+    window.location.href = "myNotes.html";
+  }
 
   var notee = {
     title : note_title,
     description : note_des,
-    recorded : note_date
+    recorded : note_date,
+    fav : 0
   }
 
   if(localStorage.getItem('notes') === null){
@@ -39,20 +40,35 @@ function fetchNotes(){
   var notes = JSON.parse(localStorage.getItem('notes'));
 
   var noteResult = document.getElementById("notesHere");
-  noteResult.innerHTML = "";
+  //noteResult.innerHTML = "";
+  var favResult = document.getElementById("favNotes");
 
   for(var i = 0; i < notes.length; i++){
     var title = notes[i].title;
     var desc = notes[i].description;
     var rec = notes[i].recorded;
+    var isFav = notes[i].fav;
 
-    noteResult.innerHTML += '<div class="well">'+
-  									'<h5><strong>'+title+ '</strong></h5>'+
-  									'<p>'+desc+'</p>'+
-                    '<a onclick="editNote(\''+i+'\')" class="btn btn-primary" href="#"><i class="fa fa-pencil"></i> Edit</a>'+
-                    ' &nbsp'+
-                    '<a onclick="deleteNote(\''+i+'\')" class="btn btn-danger" href="#"><i class="fa fa-trash"></i> Delete</a>'
-                    '</div>';
+    if(!isFav){
+      noteResult.innerHTML += '<div class="well" ondragstart="dragStart(\''+i+'\',event)" draggable="true" id="dragtarget"'+
+    									'<h5><strong>'+title+ '</strong></h5>'+
+    									'<p>'+desc+'</p>'+
+                      '<a onclick="editNote(\''+i+'\')" class="btn btn-primary" href="#"><i class="fa fa-pencil"></i> Edit</a>'+
+                      ' &nbsp'+
+                      '<a onclick="deleteNote(\''+i+'\')" class="btn btn-danger" href="myNotes.html"><i class="fa fa-trash"></i> Delete</a>'
+                      '</div>';
+    }
+    else{
+      favResult.innerHTML += '<div class="well" ondragstart="dragStart(\''+i+'\',event)" draggable="true" id="dragtarget"'+
+                      '<h5><strong>'+title+ '</strong></h5>'+
+                      '<p>'+desc+'</p>'+
+                      '<a onclick="editNote(\''+i+'\')" class="btn btn-primary" href="#"><i class="fa fa-pencil"></i> Edit</a>'+
+                      ' &nbsp'+
+                      '<a onclick="deleteNote(\''+i+'\')" class="btn btn-danger" href="myNotes.html"><i class="fa fa-trash"></i> Delete</a>'
+                      '</div>';
+    }
+
+
   }
 
 }
@@ -62,8 +78,8 @@ function fetchNotes(){
 function deleteNote(p){
   var notes = JSON.parse(localStorage.getItem('notes'));
   notes.splice(p,1);
-  localStorage.setItem('notes', JSON.stringify(notes));
 
+  localStorage.setItem('notes', JSON.stringify(notes));
 	fetchNotes();
 
 }
@@ -107,6 +123,10 @@ function editNote(i){
   //save the edited values
   var editedNote = document.getElementById('saveChanges');
   editedNote.onclick = function(){
+    if(!title || !desc || !rec){
+  		alert('Please submit all the info!!');
+  		return false;
+  	}
     notes[i].title = title;
     notes[i].description = desc;
     notes[i].recorded = rec;
@@ -125,12 +145,36 @@ function editNote(i){
           modal.style.display = "none";
       }
   }
+}
 
+function dragStart(id,event) {
+    event.dataTransfer.setData("aaa", event.target.id);
+    event.dataTransfer.setData("id", id);
 
+}
 
-  // notes.splice(p,1);
-  // localStorage.setItem('notes', JSON.stringify(notes));
-  //
-	// fetchNotes();
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function drop(event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("aaa");
+    var noteId = event.dataTransfer.getData("id");
+    event.target.appendChild(document.getElementById(data));
+
+    var notes = JSON.parse(localStorage.getItem('notes'));
+    if(notes[noteId].fav == 1){
+      notes[noteId].fav = 0;
+    }else{
+      notes[noteId].fav = 1;
+    }
+    localStorage.setItem('notes', JSON.stringify(notes));
+    var noteResult = document.getElementById("notesHere");
+    noteResult.innerHTML = "<br>";
+    var favResult = document.getElementById("favNotes");
+    favResult.innerHTML = "<br>";
+    fetchNotes();
+
 
 }

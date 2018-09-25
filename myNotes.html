@@ -34,7 +34,8 @@
       <div class="col-md-6">
         <div class="my-3 p-3 bg-white rounded box-shadow" style="margin:25px;">
           <h4 class="border-bottom border-gray pb-2 mb-0">My Notes</h4>
-          <div id="notesHere">
+          <div id="notesHere"  ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 350px;">
+            <br>
           </div>
 
           <div id="myModal" class="modal">
@@ -69,16 +70,8 @@
       <div class="col-md-6">
         <div class="my-3 p-3 bg-white rounded box-shadow" style="margin:25px;">
           <h4 class="border-bottom border-gray pb-2 mb-0">Favourites</h4>
-          <div class="media text-muted pt-3">
-            <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
-            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-              <strong class="d-block text-gray-dark">@username</strong>
-              Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-            </p>
-          </div>
-
-          <div id="check">
-
+          <div id="favNotes" style="min-height: 350px;" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <br>
           </div>
         </div>
       </div>

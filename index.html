@@ -34,7 +34,7 @@
 
       <div class="jumbotron">
         <h2>Store Your Important Notes </h2><br>
-        <form id="myForm">
+        <form id="myForm" onsubmit="return false">
           <div class="form-group">
             <label>Title</label>
             <input type="text" class="form-control" id="noteTitle" placeholder="Note Title" />
@@ -49,7 +49,7 @@
 
           </div>
 
-          <a href="myNotes.html" onclick="storeNotes()" type="submit" class="btn btn-primary">Save</a>&nbsp
+          <button onclick="storeNotes()" type="submit" class="btn btn-primary">Save</button>&nbsp
           <a href="myNotes.html" type="submit" class="btn btn-danger">Cancel</a>
       </form>
 
